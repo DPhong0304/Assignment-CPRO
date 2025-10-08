@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -g -o
+CFLAGS = -g 
 
 TARGET = memory_lab
 
@@ -9,7 +9,7 @@ FILES = memory_lab.c
 all: $(TARGET)
 
 $(TARGET): $(FILES)
-	$(CC) $(CFLAGS) $(TARGET) $(FILES)
+	$(CC) $(CFLAGS) -o $(TARGET) $(FILES)
 
 clean:
 	rm -f $(TARGET)
