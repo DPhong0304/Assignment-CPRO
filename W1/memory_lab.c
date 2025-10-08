@@ -22,8 +22,8 @@ int main(int argc, char* argv[]){
     }
     else if (strcmp(chosen_err, "memory_leak") == 0){
         printf("=============Memory leak===========\n");
-        int* phong = memory_leak();
-        printf("function closed but memory still in heap: %p = %d\n", phong, *phong);
+        int* ptr = memory_leak();
+        printf("function closed but memory still in heap: %p = %d\n", ptr, *ptr);
     }
     else if (strcmp(chosen_err, "out_of_memory") == 0){
         printf("========== Out of memory ===========\n");
@@ -42,22 +42,20 @@ void stack_overflow(void){
 }
 
 void functionA(){
-    int phong = 1;
-    int phongdepzai = 1;
     functionA();
 }
 
 int* memory_leak(void){
-    int* phong = (int*) malloc(sizeof(int));
-    *phong = 100;
-    return phong;
+    int* ptr = (int*) malloc(sizeof(int));
+    *ptr = 100;
+    return ptr;
 }
 
 void out_of_memory(void){ 
     int size = 10000;
     while (1){
-        void* phong = malloc(sizeof(int) * size);
-        if (phong == NULL){
+        void* ptr = malloc(sizeof(int) * size);
+        if (ptr == NULL){
             printf("Out of memory\n");
             break;
         }
